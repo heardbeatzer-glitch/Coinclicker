@@ -1,0 +1,36 @@
+:root {
+    --gold: #ffd700;
+    --dark-gold: #b8860b;
+    --bg-yellow: #ffeb3b;
+}
+
+body {
+    margin: 0; padding: 0; height: 100vh; display: flex;
+    background: radial-gradient(circle, var(--bg-yellow) 0%, #fbc02d 100%);
+    overflow: hidden; font-family: sans-serif; user-select: none;
+}
+
+#sunburst {
+    position: absolute; width: 250vw; height: 250vw; top: -75vw; left: -75vw;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0.2) 0deg 15deg, transparent 15deg 30deg);
+    animation: rotate 40s linear infinite; z-index: 0;
+}
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+#game-area { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1; }
+#balance { font-size: 5rem; margin: 0; color: #333; }
+#coin {
+    width: 280px; height: 280px; background: linear-gradient(145deg, var(--gold), var(--dark-gold));
+    border-radius: 50%; border: 10px solid #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    display: flex; justify-content: center; align-items: center; font-size: 80px; color: white; cursor: pointer;
+    transition: transform 0.05s ease-out;
+}
+#coin:active { transform: scale(0.92); }
+
+#sidebar { width: 300px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 20px; z-index: 2; border-left: 1px solid white; }
+.upgrade-card { background: #333; color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; }
+.upgrade-card.available { background: #2e7d32; }
+
+.float-text { position: absolute; color: #333; font-weight: bold; font-size: 2rem; animation: floatUp 0.7s forwards; pointer-events: none; }
+@keyframes floatUp { to { transform: translateY(-100px); opacity: 0; } }
